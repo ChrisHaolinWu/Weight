@@ -7,17 +7,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.app.Activity;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.view.View.OnClickListener;
 
 public class Weight extends AppCompatActivity {
-    public static String sex="";
+    public static String sex="Male";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /*载入布局weight */
         setContentView(R.layout.weight);
         /*取得xml内的按钮*/
-        Button b1=(Button)findViewById(R.id.btnWork);
-        b1.setOnClickListener(new View.OnClickListener() {
+        Button b1 =(Button) findViewById(R.id.btnWork);
+        /*获得用户填写的高度*/
+        EditText et =(EditText)findViewById(R.id.etWeight);
+        b1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 /*获得用户填写的高度*/
@@ -25,7 +31,7 @@ public class Weight extends AppCompatActivity {
                 double height=Double.parseDouble(et.getText().toString());
                 /*获得性别*/
                 RadioGroup rg=(RadioGroup)findViewById(R.id.rgSex);
-                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup arg0, int i) {
                         if(i==R.id.rbMale)
